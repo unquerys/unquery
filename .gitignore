@@ -18,6 +18,9 @@ Thumbs.db
 dist/
 build/
 *.zip
+CREATE_RELEASE.md
+DEPLOYMENT_READY.md
+RELEASE_*.md
 
 # OS
 .DS_Store
