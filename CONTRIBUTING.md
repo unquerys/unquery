@@ -163,7 +163,7 @@ All PRs go through review. Feedback might include:
 - Error handling improvements
 - Documentation clarity
 
-This is all constructive—question the code, not the person!
+This is all constructive - question the code, not the person!
 
 ## Questions?
 

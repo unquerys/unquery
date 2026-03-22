@@ -1,6 +1,6 @@
 # 🚫 Unquery
 
-> **Block AI Overviews, Copilot responses, and AI summaries** across all major search engines—and track the environmental impact.
+> **Block AI Overviews, Copilot responses, and AI summaries** across all major search engines and track the environmental impact.
 
 ![MIT License](https://img.shields.io/badge/licence-MIT-blue.svg)
 ![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Coming%20Soon-orange)
@@ -41,7 +41,7 @@ Unquery is a lightweight, privacy-first Chrome extension that removes AI-generat
 - ✅ Zero data collection
 - ✅ Runs entirely locally in your browser
 - ✅ No external network requests (except optional remote selectors)
-- ✅ Open source—audit the code yourself
+- ✅ Open source - audit the code yourself
 
 ---
 
@@ -295,7 +295,7 @@ Your support helps sustain development, selector updates, and testing across mul
 
 ## 📜 License
 
-This project is licensed under the **MIT License**—see [LICENSE](LICENSE) for details.
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) for details.
 
 ```
 MIT License - Free to use, modify, and distribute
@@ -357,147 +357,6 @@ Copyright (c) 2024-2026 Unquery Contributors
 🌍 *Blocking AI = Saving Water + Energy = Protecting Our Planet* 🌍
 
 </div>
-
----
-
-## How It Works
-
-### Core Mechanism
-
-**Content Script (`content.js`):**
-- Executes on supported search engine domains
-- Removes AI overview elements on page load using CSS selectors
-- Observes DOM mutations to catch dynamically injected AI content
-- Uses multiple detection strategies (element removal, style-based hiding, network interception)
-
-**Background Service Worker (`background.js`):**
-- Tracks blocked-query events
-- Maintains cumulative statistics (water, energy)
-- Manages weekly progress windows (reset Mondays at 00:00 local time)
-- Updates extension badge with weekly block count
-
-**UI (`popup.html` + `popup.js`):**
-- Toggle extension on/off per session
-- Display real-time savings metrics
-- Weekly progress bar toward configurable goals
-- Last-blocked event verification
-
-### Environmental Impact Calculation
-
-The extension uses these baseline assumptions:
-
-| Metric | Standard Query | AI Query | Delta |
-|--------|---|---|---|
-| **Water** | 10 ml | 100 ml | 90 ml |
-| **Energy** | 0.3 Wh | 3.0 Wh | 2.7 Wh |
-
-**Formulas:**
-```
-Water Saved (ml) = Blocked Queries × 90
-Energy Saved (Wh) = Blocked Queries × 2.7
-```
-
-These numbers are based on published research into data center resource consumption and AI model inference costs.
-
----
-
-## Configuration
-
-### Remote Selector Updates
-
-To enable automatic selector updates from a remote source:
-
-1. Edit `content.js` and update the `urls` array in `fetchRemoteSelectors()`:
-
-```javascript
-const urls = [
-  'https://your-domain.com/selectors.json'
-];
-```
-
-2. Host a `selectors.json` file with this structure:
-
-```json
-{
-  "google": [
-    "div.ai-overview-container",
-    "div[data-ai-block]"
-  ],
-  "bing": [
-    "#copilot-response"
-  ]
-}
-```
-
-3. Reload the extension in `chrome://extensions`
-
-### Customize Weekly Goals
-
-Goals are stored in `chrome.storage.local.weeklyGoal`. Modify in the popup or directly via DevTools:
-
-```javascript
-chrome.storage.local.set({ weeklyGoal: 50 });
-```
-
----
-
-## Troubleshooting
-
-### AI Overviews Still Appearing?
-
-1. **Verify the extension is enabled:**
-   - Click the extension icon in your toolbar
-   - Confirm "on/off" toggle is in the **on** position
-
-2. **Check selector support:**
-   - Open your browser's DevTools (F12)
-   - Console should show no errors
-   - Google frequently changes selectors; this is expected
-
-3. **Update selectors:**
-   - Open an issue on GitHub with:
-     - The search URL you were on
-     - Screenshot of the visible AI block
-     - HTML snippet from DevTools showing the container
-
-4. **Force reload:**
-   - Go to `chrome://extensions`
-   - Click the reload icon on the Unquery extension
-
-### Stats Not Updating?
-
-1. Clear storage: `chrome.storage.local.clear()` in DevTools console
-2. Reload the extension
-3. Search again and await a few seconds for stats to sync
-
-### Extension Disabled Automatically?
-
-Chrome disables extensions on startup in certain scenarios. Re-enable at `chrome://extensions`.
-
----
-
-## Development
-
-### Project Structure
-
-```
-unquery/
-├── manifest.json          # Manifest V3 config, permissions
-├── content.js             # Content script: DOM removal, selectors, monitoring
-├── background.js          # Service worker: stats tracking, storage
-├── popup.html             # UI template with animations
-├── popup.js               # UI logic, storage bindings
-├── icons/                 # Extension icons (16, 24, 32, 48, 128 px)
-├── LICENSE                # MIT License
-└── README.md              # This file
-```
-
-### Local Development Workflow
-
-1. Make edits to `.js` or `.html` files
-2. Go to `chrome://extensions`
-3. Click the reload icon on Unquery
-4. Test on a search results page
 5. Check DevTools console for errors
 
 ### Adding Support for a New Search Engine
@@ -573,21 +432,6 @@ Even small donations help sustain development, selector updates, and testing acr
 - Always respect the terms of service of any website you visit
 
 ---
-
-## License
-
-This project is licensed under the **MIT License**—see [LICENSE](LICENSE) for details.
-
----
-
-## Changelog
-
-### v0.2.0
-- Multi-engine support (8 search engines)
-- Environmental impact tracking
-- Weekly progress goals
-- Remote selector updates (optional)
-- Improved error handling
 
 ### v0.1.0
 - Initial release (Google-only)
