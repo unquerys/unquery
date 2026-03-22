@@ -167,8 +167,8 @@ This is all constructive - question the code, not the person!
 
 ## Questions?
 
-- **Issues:** [GitHub Issues](https://github.com/unquery/unquery/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/unquery/unquery/discussions)
+- **Issues:** [GitHub Issues](https://github.com/unquerys/unquery/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/unquerys/unquery/discussions)
 
 ---
 
