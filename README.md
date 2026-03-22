@@ -3,7 +3,7 @@
 > **Block AI Overviews, Copilot responses, and AI summaries** across all major search engines—and track the environmental impact.
 
 ![MIT License](https://img.shields.io/badge/licence-MIT-blue.svg)
-![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-Available-brightgreen)
+![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Coming%20Soon-orange)
 ![Manifest V3](https://img.shields.io/badge/Manifest-v3-informational)
 ![JavaScript](https://img.shields.io/badge/Lang-JavaScript-yellow)
 ![Zero Dependencies](https://img.shields.io/badge/Dependencies-0-success)
@@ -62,14 +62,14 @@ Unquery is a lightweight, privacy-first Chrome extension that removes AI-generat
 
 ## 📥 Installation
 
-### 🎁 From Chrome Web Store
-[🔗 Visit the Chrome Web Store](https://chromewebstore.google.com) and search for "Unquery" to install the latest published version.
+### 🎁 Chrome Web Store
+⏳ **Coming Soon!** Unquery is being prepared for Chrome Web Store submission. For now, use manual installation below.
 
-### 🧑‍💻 Manual Installation (Development)
+### 🧑‍💻 Manual Installation (Development/Testing)
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/unquery/unquery.git
+   git clone https://github.com/unquerys/unquery.git
    cd unquery
    ```
 
@@ -287,11 +287,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 If Unquery saves you time and helps the environment, consider supporting the project:
 
-| Option | Link |
-|--------|------|
-| ☕ **Buy Me a Coffee** | [![BMAC](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/rybrtle) |
-| 🎁 **GitHub Sponsors** | [![GH Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-white?logo=github&logoColor=black)](https://github.com/sponsors) |
-| 💗 **Ko-fi** | [![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E8A?logo=ko-fi&logoColor=white)](https://ko-fi.com/) |
+**☕ [Buy Me a Coffee](https://www.buymeacoffee.com/rybrtle)**
 
 Your support helps sustain development, selector updates, and testing across multiple search engines. **Every donation is appreciated!** 🙏
 
