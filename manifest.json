@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Unquery",
+  "description": "Block AI Overviews, Copilot responses, and AI summaries across all major search engines.",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage", "tabs"],
+  "host_permissions": [
+    "*://*.google.com/*",
+    "*://*.bing.com/*",
+    "*://*.duckduckgo.com/*",
+    "*://*.ecosia.org/*",
+    "*://*.startpage.com/*",
+    "*://*.brave.com/*",
+    "*://*.yahoo.com/*",
+    "*://*.yandex.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Unquery - Block All AI Overviews",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "24": "icons/icon24.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/search*",
+        "*://*.bing.com/search*",
+        "*://*.duckduckgo.com/*",
+        "*://*.ecosia.org/search*",
+        "*://*.startpage.com/cgi-bin/aspsearch*",
+        "*://*.brave.com/search*",
+        "*://*.yahoo.com/search*",
+        "*://*.yandex.com/search*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}

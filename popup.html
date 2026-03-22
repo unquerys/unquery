@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unquery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest-900: #374a36;
+        --forest-700: #4d6a4a;
+        --forest-500: #78a26d;
+        --sage-200: #dfe6d5;
+        --cream-100: #f2f0ea;
+        --stone-500: #8d8376;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        width: 360px;
+        background: radial-gradient(circle at 20% -10%, #f9f8f3 5%, #ece9de 60%, #e6e1d5 100%);
+        color: #3d4a38;
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .card {
+        border: 1px solid #d2cec3;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(180deg, var(--forest-900), #3f533d);
+        color: #ecf1e9;
+        padding: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand-left {
+        display: flex;
+        gap: 0;
+        align-items: center;
+      }
+
+      .title {
+        font-family: "Fraunces", serif;
+        font-size: 39px;
+        line-height: 1;
+        letter-spacing: 0.02em;
+      }
+
+      .tagline {
+        margin-top: 4px;
+        color: #beccba;
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 15px;
+      }
+
+      .switch {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #bed0b8;
+      }
+
+      .switch input {
+        appearance: none;
+        width: 70px;
+        height: 34px;
+        border-radius: 99px;
+        background: #8dad85;
+        position: relative;
+        cursor: pointer;
+        transition: background 180ms ease;
+      }
+
+      .switch input::after {
+        content: "";
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #f3f4ef;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        transition: transform 180ms ease;
+      }
+
+      .switch input:not(:checked) {
+        background: #7f8779;
+      }
+
+      .switch input:not(:checked)::after {
+        transform: translateX(-36px);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-top: 1px solid #d8d5cb;
+        border-bottom: 1px solid #d8d5cb;
+      }
+
+      .stat {
+        min-height: 185px;
+        padding: 20px 16px;
+        border-right: 1px solid #d8d5cb;
+        background: #f4f2ec;
+      }
+
+      .stat:last-child {
+        border-right: none;
+      }
+
+      .stat h3 {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.16em;
+        color: #8d8376;
+      }
+
+      .stat-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .stat-icon {
+        width: 56px;
+        height: 56px;
+      }
+
+      .water-icon {
+        animation: icon-bob 3200ms ease-in-out infinite;
+      }
+
+      .water-fill {
+        transform-origin: 50% 100%;
+        animation: water-slosh 2600ms ease-in-out infinite;
+      }
+
+      .water-bubble {
+        animation: bubble-rise 2400ms ease-in-out infinite;
+      }
+
+      .leaf-icon {
+        transform-origin: 50% 80%;
+        animation: leaf-sway 2800ms ease-in-out infinite;
+      }
+
+      .stat-value {
+        margin-top: 32px;
+        font-size: 36px;
+        color: var(--forest-700);
+        transition: color 180ms ease;
+      }
+
+      .stat-value.bump {
+        color: #5b8f56;
+      }
+
+      .unit {
+        margin-top: 8px;
+        font-size: 12px;
+        color: #8a8376;
+      }
+
+      .progress {
+        padding: 18px;
+      }
+
+      .progress-title {
+        margin: 0;
+        color: #6e6659;
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 24px;
+      }
+
+      .progress-meta {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        color: #8a8376;
+        font-size: 14px;
+      }
+
+      .progress-meta strong {
+        color: #5f6957;
+      }
+
+      .bar {
+        margin-top: 10px;
+        height: 10px;
+        border-radius: 99px;
+        background: #ddd9cf;
+        overflow: hidden;
+      }
+
+      .bar > span {
+        display: block;
+        width: 0;
+        height: 100%;
+        border-radius: 99px;
+        background: #7ca16f;
+        transition: width 220ms ease;
+      }
+
+      .verification {
+        padding: 14px 18px;
+        border-top: 1px solid #d8d5cb;
+        border-bottom: 1px solid #d8d5cb;
+        background: #f0eee7;
+      }
+
+      .verification h3 {
+        margin: 0 0 8px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #7f776a;
+      }
+
+      .verify-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+        color: #6f675a;
+      }
+
+      .verify-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .verify-status::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #a09a8d;
+      }
+
+      .verify-status.ok::before {
+        background: #6ea86d;
+      }
+
+      .verify-status.warn::before {
+        background: #b8915e;
+      }
+
+      .verify-meta {
+        margin-top: 6px;
+        font-size: 11px;
+        color: #867d6f;
+        line-height: 1.5;
+      }
+
+      .verify-button {
+        border: 1px solid #d2cec3;
+        background: #f3f1e9;
+        border-radius: 10px;
+        color: #6c775f;
+        padding: 6px 10px;
+        text-decoration: none;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .verify-button:hover {
+        background: #ece9dd;
+      }
+
+      .footer {
+        padding: 14px 18px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #d8d5cb;
+        gap: 8px;
+      }
+
+      .footer-note {
+        margin: 0;
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        color: #8f8578;
+        font-size: 14px;
+      }
+
+      .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .footer-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid #d2cec3;
+        background: #f3f1e9;
+        border-radius: 10px;
+        color: #6c775f;
+        padding: 7px 10px;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer-link:hover {
+        background: #ece9dd;
+      }
+
+      .support {
+        border: 1px solid #d2cec3;
+        background: #f3f1e9;
+        border-radius: 10px;
+        color: #6c775f;
+        padding: 7px 10px;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .support:hover {
+        background: #ece9dd;
+      }
+
+      @keyframes icon-bob {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+
+        50% {
+          transform: translateY(-3px);
+        }
+      }
+
+      @keyframes water-slosh {
+        0%,
+        100% {
+          transform: translateY(0px) scaleX(1);
+        }
+
+        50% {
+          transform: translateY(1px) scaleX(1.04);
+        }
+      }
+
+      @keyframes bubble-rise {
+        0% {
+          transform: translateY(0px);
+          opacity: 0.35;
+        }
+
+        50% {
+          opacity: 0.7;
+        }
+
+        100% {
+          transform: translateY(-7px);
+          opacity: 0.2;
+        }
+      }
+
+      @keyframes leaf-sway {
+        0%,
+        100% {
+          transform: rotate(-4deg);
+        }
+
+        50% {
+          transform: rotate(6deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <header class="header">
+        <div class="brand">
+          <div class="brand-left">
+            <div>
+              <div class="title">Unquery</div>
+              <div class="tagline">Protecting the planet, one search at a time.</div>
+            </div>
+          </div>
+
+          <label class="switch" aria-label="Enable Unquery">
+            <span id="toggle-label">on</span>
+            <input id="enabled-toggle" type="checkbox" checked />
+          </label>
+        </div>
+      </header>
+
+      <section class="grid">
+        <article class="stat">
+          <div class="stat-head">
+            <h3>Water Saved</h3>
+            <svg class="stat-icon water-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M32 8 C25 18,14 25,14 38 C14 49,22 56,32 56 C42 56,50 49,50 38 C50 25,39 18,32 8 Z" fill="#cfe7dd" stroke="#6eb194" stroke-width="2"></path>
+              <path class="water-fill" d="M16 38 C16 34,22 31,32 31 C42 31,48 34,48 38 L48 39 C48 48,41 54,32 54 C23 54,16 48,16 39 Z" fill="#74b8a0"></path>
+              <circle class="water-bubble" cx="25" cy="40" r="2" fill="#ecf7f2"></circle>
+              <circle class="water-bubble" cx="37" cy="43" r="1.5" fill="#ecf7f2" style="animation-delay: 300ms"></circle>
+            </svg>
+          </div>
+          <div class="stat-value" id="water-saved">0</div>
+          <div class="unit">millilitres</div>
+        </article>
+
+        <article class="stat">
+          <div class="stat-head">
+            <h3>Energy Saved</h3>
+            <svg class="stat-icon leaf-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <path d="M49 20 C36 20,24 24,19 35 C14 47,23 56,34 54 C47 52,54 43,52 32 C51 27,49 20,49 20 Z" fill="#95c77c" stroke="#5f9f4e" stroke-width="2"></path>
+              <path d="M23 50 C27 38,34 30,45 25" fill="none" stroke="#6daa58" stroke-width="2"></path>
+            </svg>
+          </div>
+          <div class="stat-value" id="energy-saved">0</div>
+          <div class="unit">watt-hours</div>
+        </article>
+      </section>
+
+      <section class="progress">
+        <h2 class="progress-title">AI blocks this week</h2>
+        <div class="progress-meta">
+          <span><strong id="blocked-count">0</strong> blocked</span>
+          <span>goal <strong id="weekly-goal">46</strong></span>
+        </div>
+        <div class="bar">
+          <span id="goal-progress"></span>
+        </div>
+      </section>
+
+      <section class="verification">
+        <h3>Verification</h3>
+        <div class="verify-row">
+          <span id="verify-status" class="verify-status">Waiting for check</span>
+          <button id="verify-now" class="verify-button" type="button">Verify now</button>
+        </div>
+        <div class="verify-meta">
+          <div id="verify-last-event">Last blocked: never</div>
+          <div id="verify-last-source">Type: n/a</div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="footer-note">~90ml · 2.7Wh saved per block</p>
+        <div class="footer-links">
+          <a class="footer-link" href="https://github.com/unquery/unquery" target="_blank" rel="noreferrer" title="GitHub">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+          <a class="support" href="https://www.buymeacoffee.com/rybrtle" target="_blank" rel="noreferrer">Support ☕</a>
+        </div>
+      </footer>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

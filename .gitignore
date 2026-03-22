@@ -1,0 +1,25 @@
+# Development
+node_modules/
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# Build artifacts
+dist/
+build/
+*.zip
+
+# OS
+.DS_Store
+.env
+.env.local
