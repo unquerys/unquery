@@ -14,12 +14,9 @@ Protect your search experience by blocking AI overviews and AI summary modules a
 - 🎯 Includes weekly progress tracking in the popup.
 
 ## Preview
+<img width="351" height="576" alt="image" src="https://github.com/user-attachments/assets/9b41e0ce-d4a5-42b3-8591-59a37c98768c" />
 
-### Popup Snippet
-![Unquery popup preview](<img width="351" height="576" alt="image" src="https://github.com/user-attachments/assets/f70958cf-3171-4963-8fd6-9e7d98e9271a" />
-)
 
-If the image does not render yet, add your screenshot at `docs/popup-preview.png` in this repository and it will appear automatically on GitHub.
 
 ## Supported Search Engines
 - Google
