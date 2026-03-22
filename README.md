@@ -14,7 +14,8 @@ Protect your search experience by blocking AI overviews and AI summary modules a
 - 🎯 Includes weekly progress tracking in the popup.
 
 ## Preview
-<img width="351" height="576" alt="image" src="https://github.com/user-attachments/assets/9b41e0ce-d4a5-42b3-8591-59a37c98768c" />
+<img width="345" height="588" alt="image" src="https://github.com/user-attachments/assets/1d821d93-d8ef-4b17-94de-4d00dcc0dc4c" />
+
 
 
 
