@@ -16,7 +16,8 @@ Protect your search experience by blocking AI overviews and AI summary modules a
 ## Preview
 
 ### Popup Snippet
-![Unquery popup preview](docs/popup-preview.png)
+![Unquery popup preview](<img width="351" height="576" alt="image" src="https://github.com/user-attachments/assets/f70958cf-3171-4963-8fd6-9e7d98e9271a" />
+)
 
 If the image does not render yet, add your screenshot at `docs/popup-preview.png` in this repository and it will appear automatically on GitHub.
 
